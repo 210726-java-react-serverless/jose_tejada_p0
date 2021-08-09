@@ -5,22 +5,23 @@ import com.Revature.StudentManagementApp.util.IdGenerator;
 public class Student {
 
 
-    private int student_Id;
+    private String student_Id;
     private String Major;
     private SchoolUser user;
 
 
-    public Student(){
 
+    public Student(){};
+
+
+
+    public Student(String major, String fn, String ln, String dob, String phone, String username, String password, String email, Address address) {
+        this.Major = major;
+        this.user = new SchoolUser(fn, ln, dob, phone, username, password, email, address);
     }
 
 
-    public Student(String fn, String ln, String email, String username, String password) {
-        this.user = new SchoolUser(fn, ln, email, username, password);
-    }
-
-
-    public int getStudent_Id() {
+    public String getStudent_Id() {
         return student_Id;
     }
 
@@ -46,7 +47,7 @@ public class Student {
                 '}';
     }
 
-    public void setStudent_Id(int student_Id) {
+    public void setStudent_Id(String student_Id) {
         this.student_Id = student_Id;
     }
 

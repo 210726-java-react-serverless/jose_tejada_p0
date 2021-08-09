@@ -4,19 +4,19 @@ import com.Revature.StudentManagementApp.util.IdGenerator;
 
 public class Faculty {
 
-    private int Id;
+    private String Id;
     private Float Salary;
     private String department;
     private SchoolUser user;
 
 
-    Faculty(){
+    public Faculty(){
 
     }
-    public Faculty(String fn, String ln, String email, String username, String password) {
-        super();
-        this.Id = IdGenerator.getRandomId();
-        this.user = new SchoolUser(fn, ln, email, username, password);
+    public Faculty(float salary, String department, String fn, String ln, String dob, String phone, String username, String password, String email, Address address) {
+        this.Salary = salary;
+        this.department = department;
+        this.user = new SchoolUser(fn, ln, dob, dob, username,password, email, address);
     }
 
 
@@ -42,11 +42,11 @@ public class Faculty {
                 '}';
     }
 
-    public int getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.Id = id;
     }
 

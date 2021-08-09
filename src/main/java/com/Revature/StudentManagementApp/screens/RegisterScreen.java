@@ -1,5 +1,6 @@
 package com.Revature.StudentManagementApp.screens;
 
+import com.Revature.StudentManagementApp.models.Address;
 import com.Revature.StudentManagementApp.models.Faculty;
 import com.Revature.StudentManagementApp.models.Student;
 import com.Revature.StudentManagementApp.repositories.FacultyRepository;
@@ -11,11 +12,13 @@ import com.Revature.StudentManagementApp.util.ScreenRouter;
 import java.io.BufferedReader;
 
 public class RegisterScreen extends Screen{
-    StudentService stu_service = new StudentService();
+    StudentService stu_service;
+    FacultyService facultyService;
 
-    public RegisterScreen(BufferedReader consoleReader, ScreenRouter router, StudentService studentService) {
+    public RegisterScreen(BufferedReader consoleReader, ScreenRouter router, StudentService studentService, FacultyService fr) {
             super("Register Screen", "/register", consoleReader, router);
             this.stu_service = studentService;
+            this.facultyService = fr;
 
         }
 
@@ -39,6 +42,12 @@ public class RegisterScreen extends Screen{
             System.out.print("Last name: ");
             String lastName = consoleReader.readLine();
 
+            System.out.print("Date of birth (dd/mm/yy):" );
+            String dob = consoleReader.readLine();
+
+            System.out.print("Phone number");
+            String phoneNumber = consoleReader.readLine();
+
             System.out.print("Email: ");
             String email = consoleReader.readLine();
 
@@ -49,31 +58,66 @@ public class RegisterScreen extends Screen{
             String password = consoleReader.readLine();
 
 
+            System.out.println("Enter your address details:");
+            System.out.print("Street Number: ");
+            String streetNumber = consoleReader.readLine();
+
+            System.out.print("Street:");
+            String street = consoleReader.readLine();
+
+            System.out.print("City: ");
+            String city = consoleReader.readLine();
+
+            System.out.print("State: ");
+            String state = consoleReader.readLine();
+
+            System.out.print("county: ");
+            String country = consoleReader.readLine();
+
+            System.out.print("Zip Code: ");
+            String zipCode = consoleReader.readLine();
+            Address a = new Address(streetNumber, street, city, state, country, zipCode);
+
             try {
                 switch (userSelection) {
+
                     case "1":
                         try {
-                            System.out.println("look it");
-                            Student stu = new Student(firstName, lastName, email, username, password);
+
+                            System.out.print("Declared Major: ");
+                            String major = consoleReader.readLine();
+
+                            Student stu = new Student(major,firstName, lastName, dob, phoneNumber, username, password, email, a);
+
                             stu_service.register(stu);
-                            System.out.println("Register screen");
                             router.navigate("/welcome");
+
                         } catch (Exception e) {
+
                             System.out.println(e.getMessage());
                             router.navigate("/welcome");
+
                         }
                         break;
 
                     case "2":
-                        try {
-                            Faculty faculty = new Faculty(firstName, lastName, email, username, password);
-                            System.out.println(faculty);
-                            FacultyRepository f = new FacultyRepository("src/main/resources/data.txt");
-                            FacultyService faculty_service = new FacultyService(f);
-                            faculty_service.register(faculty);
 
+                        try {
+
+                            System.out.print("Department Reistering for: ");
+                            String department = consoleReader.readLine();
+
+
+
+                            Faculty faculty = new Faculty(0,department, firstName, lastName, dob,phoneNumber, email,username, password, a);
+                            System.out.println(faculty);
+
+
+                            facultyService.register(faculty);
                             router.navigate("/welcome");
+
                         } catch (Exception e) {
+
                             System.out.println(e.getMessage());
                             router.navigate("/welcome");
                         }

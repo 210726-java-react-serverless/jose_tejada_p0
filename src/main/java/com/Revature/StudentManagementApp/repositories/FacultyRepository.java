@@ -2,18 +2,20 @@ package com.Revature.StudentManagementApp.repositories;
 
 import com.Revature.StudentManagementApp.models.Faculty;
 import com.Revature.StudentManagementApp.models.Student;
+import com.Revature.StudentManagementApp.util.MongoConnection;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+import static com.mongodb.client.model.Filters.eq;
+
 public class FacultyRepository implements CrudRepository<Faculty> {
-
-    private File dataSource;
-    public FacultyRepository(String dataSourcePath) {
-        dataSource = new File(dataSourcePath);
-    }
-
 
 
     public Faculty findById(int id) {
@@ -22,21 +24,41 @@ public class FacultyRepository implements CrudRepository<Faculty> {
 
 
     public Faculty save(Faculty user) {
-        File dataSource = new File("src/main/resources/data.txt");
+        MongoConnection cm = MongoConnection.getInstance();
+        MongoClient mongoClient = cm.getConnection();
+
+        MongoDatabase p0 = mongoClient.getDatabase("jose_project_0");
+        MongoCollection<Document> usersCollection = p0.getCollection("facultyy");
+
+        Document addressdoc = new Document("number", user.getUser().getAddress().getNumber())
+                                    .append("street", user.getUser().getAddress().getStreet())
+                                    .append("city", user.getUser().getAddress().getCity())
+                                    .append("state", user.getUser().getAddress().getState())
+                                    .append("country", user.getUser().getAddress().getCountry())
+                                    .append("zip_code", user.getUser().getAddress().getZip_code());
+
+        Document newUserDoc = new Document("first_name", user.getUser().getFirst_name())
+                .append("last_name", user.getUser().getLast_name())
+                .append("DOB", user.getUser().getDOB())
+                .append("phone_num", user.getUser().getPhone_num())
+                .append("user_name", user.getUser().getUser_name())
+                .append("password", user.getUser().getPassword())
+                .append("email", user.getUser().getEmail())
+                .append("address", addressdoc);
+
+
+
+        Document facultyDoc = new Document("Salary", user.getSalary())
+                .append("Department", user.getDepartment())
+                .append( "user", newUserDoc);
+
+        usersCollection.insertOne(facultyDoc);
+
+
+
+        user.setId(facultyDoc.get("_id").toString());
         System.out.println(user);
-
-        try {
-            FileWriter writer = new FileWriter(dataSource, true);// TODO this will need to be fixed, as all users will have the same id.
-            writer.write(user.toFile());
-            writer.flush();
-            writer.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         return user;
-
     }
 
     @Override
@@ -55,31 +77,23 @@ public class FacultyRepository implements CrudRepository<Faculty> {
     }
 
     public Faculty findUserByCredentials(String username, String password) {
-        dataSource = new File("src/main/resources/data.txt");
-        Faculty user = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(dataSource))){
+        MongoConnection mc = MongoConnection.getInstance();
+        MongoClient mongoClient = mc.getConnection();
 
-            String str = reader.readLine();
-            while(str != null) {
-
-                String[] parts = str.split(":");
-                if(parts[4].equals(username) && parts[5].equals(password)) {
-                    user = new Faculty(parts[0], parts[1], parts[2], parts[3], parts[4]);
-                    break;
-                }
-                str = reader.readLine();
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        MongoDatabase p0 = mongoClient.getDatabase("jose_project_0");
+        Student student = null;
+        MongoCollection<Document> usersCollection = p0.getCollection( "faculty");
+//        Document queryDoc = new Document("user.user_name", username).append("user.password", password);
+//        Document authUserDoc = usersCollection.find(queryDoc).first();
+        Document doc = usersCollection.find(eq("user.user_name", username)).first();
+        System.out.println(doc);
+        if (doc == null) {
+            return null;
+        }else {
         }
-        if (user.equals(null))
-        {
-            System.out.println("User not found");
+        return new Faculty();
 
-        }
-        return user;
     }
 
-}
+
+    }

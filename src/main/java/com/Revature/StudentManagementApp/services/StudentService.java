@@ -25,7 +25,7 @@ public class StudentService {
 
                 throw new InvalidRequestException("Invalid user data provided!");
             }else
-                System.out.println("jojojojo");
+                System.out.println("inside regis");
                 return stu_repo.save(new_user);
     }
 

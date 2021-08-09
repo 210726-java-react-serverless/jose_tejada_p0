@@ -53,23 +53,26 @@ public class LoginScreen extends Screen{
 
 
 
-        try {
-            if (userSelection.equals("1")) {
-                //login as Student
-                router.navigate("/register");
+
+            switch (userSelection) {
+                case "1":
+                    try {
+                        stu_service.login(username, password);
+                        router.navigate("/studentScreen");
+                        System.out.println("lololol");
+                    }catch (Exception o){
+                        o.printStackTrace();
+
+                }
+
+                    break;
+                case "2":
+                    router.navigate("/facultyScreen");
+
             }
-            else if(userSelection.equals("2"))
-            {
-                //login is Faculty
-                router.navigate("/register");
-            }
-        }catch (Exception e){
-            Faculty user = faculty_service.login(username, password);
-
-        }
 
 
-        router.navigate("/welcome");
+//        router.navigate("/");
 
     }
 }

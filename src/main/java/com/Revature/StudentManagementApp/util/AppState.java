@@ -25,6 +25,10 @@ public class AppState {
         StudentRepository userRepo = new StudentRepository();
         StudentService studentService = new StudentService(userRepo);
 
+        FacultyRepository facRepo = new FacultyRepository();
+        FacultyService facultyService = new FacultyService(facRepo);
+
+
 
 
 
@@ -32,7 +36,7 @@ public class AppState {
 
         router.addScreen(new WelcomeScreen(consoleReader, router))
                 .addScreen(new LoginScreen(consoleReader, router, studentService))
-                .addScreen(new RegisterScreen(consoleReader, router, studentService))
+                .addScreen(new RegisterScreen(consoleReader, router, studentService, facultyService))
                 .addScreen(new StudentScreen(consoleReader, router, studentService))
                 .addScreen(new FacultyScreen(consoleReader, router, studentService));
 

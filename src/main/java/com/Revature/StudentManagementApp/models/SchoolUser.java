@@ -7,12 +7,27 @@ public class SchoolUser {
     private String first_name;
     private String last_name;
     private String DOB;
-    private char gender;
-    private String address;
     private String phone_num;
     private String user_name;
     private String password;
     private String email;
+    private Address address;
+
+
+
+    public SchoolUser(){};
+
+    public SchoolUser(String first_name, String last_name, String DOB, String phone_num, String user_name, String password, String email, Address address) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.DOB = DOB;
+        this.phone_num = phone_num;
+        this.user_name = user_name;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+    }
+
 
 
     public String getUser_name() {
@@ -40,29 +55,17 @@ public class SchoolUser {
     }
 
 
-
-
-
-    SchoolUser(String fn, String ln, String email, String user_name, String password ){
-        this.first_name = fn;
-        this.last_name = ln;
-        this.user_name = user_name;
-        this.password = password;
-        this.email = email;
-    }
-
     @Override
     public String toString() {
         return "SchoolUser{" +
                 "first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", DOB='" + DOB + '\'' +
-                ", gender=" + gender +
-                ", address='" + address + '\'' +
                 ", phone_num='" + phone_num + '\'' +
                 ", user_name='" + user_name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", address=" + address +
                 '}';
     }
 
@@ -71,8 +74,7 @@ public class SchoolUser {
         if (this == o) return true;
         if (!(o instanceof SchoolUser)) return false;
         SchoolUser that = (SchoolUser) o;
-        return getGender() == that.getGender()
-                && Objects.equals(getFirst_name(), that.getFirst_name())
+        return Objects.equals(getFirst_name(), that.getFirst_name())
                 && Objects.equals(getLast_name(), that.getLast_name())
                 && Objects.equals(getDOB(), that.getDOB())
                 && Objects.equals(getAddress(), that.getAddress())
@@ -84,7 +86,7 @@ public class SchoolUser {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirst_name(), getLast_name(), getDOB(), getGender(), getAddress(), getPhone_num(), getUser_name(), getPassword(), getEmail());
+        return Objects.hash(getFirst_name(), getLast_name(), getDOB(), getAddress(), getPhone_num(), getUser_name(), getPassword(), getEmail());
     }
 
     public String getFirst_name() {
@@ -111,19 +113,12 @@ public class SchoolUser {
         this.DOB = DOB;
     }
 
-    public char getGender() {
-        return gender;
-    }
 
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 

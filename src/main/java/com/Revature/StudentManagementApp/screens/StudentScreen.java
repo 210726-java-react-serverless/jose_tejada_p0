@@ -13,7 +13,17 @@ public class StudentScreen extends Screen{
 
     @Override
     public void render() throws Exception {
-
         System.out.println("Inside Student Screen");
+        String menu = "\nWelcome to the student screen\n" +
+                "1) Look up my information\n" +
+                "2) Register for classes\n" +
+                "3) Drop classes\n" +
+                "4) Update user info\n" +
+                "> ";
+
+        System.out.println(menu);
+        String userSelection = consoleReader.readLine();
+
+
     }
 }

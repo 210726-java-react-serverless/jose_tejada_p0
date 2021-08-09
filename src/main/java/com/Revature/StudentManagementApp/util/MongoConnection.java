@@ -12,6 +12,7 @@ import com.mongodb.client.MongoDatabase;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 
 
@@ -45,8 +46,9 @@ public class MongoConnection {
         try {
             this.mongoClient = MongoClients.create(
                     MongoClientSettings.builder()
-                            .applyToClusterSettings(builder -> builder.hosts(Arrays.asList(new ServerAddress(ipAddress, port))))
-                            .credential(MongoCredential.createScramSha1Credential(dbName, dbUsername, dbPassword.toCharArray()))
+                            .applyToClusterSettings(builder -> builder
+                            .hosts(Collections.singletonList(new ServerAddress(ipAddress, port))))
+                            .credential(MongoCredential.createScramSha1Credential(dbUsername, dbName,  dbPassword.toCharArray()))
                             .build());
         }catch (Exception e){
             System.out.println(e.getMessage());
@@ -61,7 +63,9 @@ public class MongoConnection {
         return connec;
     }
 
-
+    public void cleanUp(){
+        mongoClient.close();
+    }
 
     public MongoClient getConnection() {
         return mongoClient;
