@@ -74,3 +74,4 @@ That class is not available or does not exit
 11.08.2021 09:53:00.340  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen: User Did not select and account for logging in
 11.08.2021 10:16:44.135  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
 11.08.2021 10:16:44.137  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 10:20:35.524  - main - ERROR - com.Revature.StudentManagementApp.services.FacultyService:Fields may have been left blank
