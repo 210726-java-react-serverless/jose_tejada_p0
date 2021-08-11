@@ -3,24 +3,27 @@ package com.Revature.StudentManagementApp.services;
 import com.Revature.StudentManagementApp.exceptions.InvalidRequestException;
 import com.Revature.StudentManagementApp.models.Faculty;
 import com.Revature.StudentManagementApp.repositories.FacultyRepository;
+import com.Revature.StudentManagementApp.util.CurrentUser;
+
+import javax.naming.AuthenticationException;
 
 public class FacultyService {
 
-    private FacultyRepository faculty_repo;
+    private final FacultyRepository faculty_repo;
+    private final CurrentUser sesh;
 
 
-    public FacultyService(FacultyRepository faculty_repo){
+    public FacultyService(FacultyRepository faculty_repo, CurrentUser sesh){
+
         this.faculty_repo = faculty_repo;
+        this.sesh = sesh;
     }
 
-    public FacultyService() {
-
-    }
 
 
     //TODO student register method AND FACULTY
     public Faculty register(Faculty new_user){
-        System.out.println("Inside register");
+
         if (!isUserValid(new_user)) {
             throw new InvalidRequestException("Invalid user data provided!");
         }
@@ -38,10 +41,26 @@ public class FacultyService {
 
 
     public Faculty login(String username, String password) {
-        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
-            throw new InvalidRequestException("Invalid user credentials provided!");
+        Faculty faculty = faculty_repo.findUserByCredentials(username, password);
+
+
+        if (faculty == null) {
+
+            try {
+                throw new AuthenticationException("Invalid user");
+            } catch (AuthenticationException e) {
+                e.printStackTrace();
+            }
+
         }
 
-        return faculty_repo.findUserByCredentials(username, password);
+
+        sesh.setCurrentUserFaculty(faculty);
+        return faculty;
+
+    }
+
+    public CurrentUser getSesh(){
+        return sesh;
     }
 }

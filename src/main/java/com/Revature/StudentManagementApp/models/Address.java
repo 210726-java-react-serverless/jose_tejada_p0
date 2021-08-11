@@ -1,5 +1,8 @@
 package com.Revature.StudentManagementApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
 
 

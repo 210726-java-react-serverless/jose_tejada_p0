@@ -63,7 +63,7 @@ public class MongoConnection {
         return connec;
     }
 
-    public void cleanUp(){
+    public void closeIt(){
         mongoClient.close();
     }
 

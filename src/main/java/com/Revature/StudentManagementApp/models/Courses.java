@@ -1,14 +1,28 @@
 package com.Revature.StudentManagementApp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Objects;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Courses {
-
 
     private String course_name;
     private String course_code;
     private String start_date;
     private String end_date;
+    private boolean isvailable = true;
+
+
+    @Override
+    public String toString() {
+        return "Courses{" +
+                "course_name='" + course_name + '\'' +
+                ", course_code='" + course_code + '\'' +
+                ", start_date='" + start_date + '\'' +
+                ", end_date='" + end_date + '\'' +
+                ", isvailable=" + isvailable +
+                '}';
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -22,6 +36,8 @@ public class Courses {
     public int hashCode() {
         return Objects.hash(getCourse_name(), getCourse_code(), getStart_date(), getEnd_date());
     }
+
+    public Courses(){};
 
     public Courses(String course_name, String course_code, String start_date, String end_date) {
         this.course_name = course_name;
@@ -62,8 +78,13 @@ public class Courses {
         this.end_date = end_date;
     }
 
+    public boolean isIsvailable() {
+        return isvailable;
+    }
 
-
+    public void setIsvailable(boolean isvailable) {
+        this.isvailable = isvailable;
+    }
 
 
 

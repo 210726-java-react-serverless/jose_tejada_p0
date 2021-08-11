@@ -1,8 +1,10 @@
 package com.Revature.StudentManagementApp.models;
 
 import com.Revature.StudentManagementApp.util.IdGenerator;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Faculty {
+
 
     private String Id;
     private Float Salary;
@@ -16,7 +18,7 @@ public class Faculty {
     public Faculty(float salary, String department, String fn, String ln, String dob, String phone, String username, String password, String email, Address address) {
         this.Salary = salary;
         this.department = department;
-        this.user = new SchoolUser(fn, ln, dob, dob, username,password, email, address);
+        this.user = new SchoolUser(fn, ln, dob, phone, username,password, email, address);
     }
 
 
@@ -32,13 +34,13 @@ public class Faculty {
         return builder.toString();
     }
 
-
     @Override
     public String toString() {
         return "Faculty{" +
-                "Id=" + Id +
+                "Id='" + Id + '\'' +
+                ", Salary=" + Salary +
                 ", department='" + department + '\'' +
-                ", User=" + user +
+                ", user=" + user +
                 '}';
     }
 
@@ -71,6 +73,6 @@ public class Faculty {
     }
 
     public void setUser(SchoolUser user) {
-        user = user;
+        this.user = user;
     }
 }

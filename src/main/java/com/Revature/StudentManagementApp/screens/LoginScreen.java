@@ -22,10 +22,11 @@ public class LoginScreen extends Screen{
     private  StudentService stu_service = null;
     private  FacultyService faculty_service = null;
 
-    public LoginScreen(BufferedReader consoleReader, ScreenRouter router, StudentService stu_service) {
+    public LoginScreen(BufferedReader consoleReader, ScreenRouter router, StudentService stu_service, FacultyService facultyService) {
 
         super("Login", "/login", consoleReader, router);
         this.stu_service = stu_service;
+        this.faculty_service = facultyService;
     }
 
 
@@ -55,24 +56,34 @@ public class LoginScreen extends Screen{
 
 
             switch (userSelection) {
+
                 case "1":
                     try {
                         stu_service.login(username, password);
                         router.navigate("/studentScreen");
-                        System.out.println("lololol");
+
                     }catch (Exception o){
                         o.printStackTrace();
 
                 }
 
                     break;
+
+
                 case "2":
-                    router.navigate("/facultyScreen");
+
+                    try {
+                        faculty_service.login(username, password);
+                        router.navigate("/facultyScreen");
+                    }catch (Exception o)
+                    {
+                        o.printStackTrace();
+                    }
+
+                    break;
 
             }
 
-
-//        router.navigate("/");
 
     }
 }

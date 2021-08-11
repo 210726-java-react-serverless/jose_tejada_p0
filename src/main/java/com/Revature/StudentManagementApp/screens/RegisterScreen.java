@@ -42,10 +42,10 @@ public class RegisterScreen extends Screen{
             System.out.print("Last name: ");
             String lastName = consoleReader.readLine();
 
-            System.out.print("Date of birth (dd/mm/yy):" );
+            System.out.print("Date of birth (dd/mm/yyyy): " );
             String dob = consoleReader.readLine();
 
-            System.out.print("Phone number");
+            System.out.print("Phone number: ");
             String phoneNumber = consoleReader.readLine();
 
             System.out.print("Email: ");
@@ -58,7 +58,7 @@ public class RegisterScreen extends Screen{
             String password = consoleReader.readLine();
 
 
-            System.out.println("Enter your address details:");
+            System.out.println("\nEnter your address details:");
             System.out.print("Street Number: ");
             String streetNumber = consoleReader.readLine();
 
@@ -109,7 +109,7 @@ public class RegisterScreen extends Screen{
 
 
 
-                            Faculty faculty = new Faculty(0,department, firstName, lastName, dob,phoneNumber, email,username, password, a);
+                            Faculty faculty = new Faculty(0, department, firstName, lastName, dob,phoneNumber, username, password,email, a);
                             System.out.println(faculty);
 
 

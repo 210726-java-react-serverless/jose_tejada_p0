@@ -1,31 +1,33 @@
 package com.Revature.StudentManagementApp.services;
 
 import com.Revature.StudentManagementApp.exceptions.InvalidRequestException;
-import com.Revature.StudentManagementApp.models.Faculty;
 import com.Revature.StudentManagementApp.models.Student;
 import com.Revature.StudentManagementApp.repositories.StudentRepository;
+import com.Revature.StudentManagementApp.util.CurrentUser;
+
+import javax.naming.AuthenticationException;
 
 public class StudentService {
 
-    private StudentRepository stu_repo;
+    private final StudentRepository stu_repo;
+    private final CurrentUser sesh;
 
 
-    public StudentService(StudentRepository stu_repo){
+    public StudentService(StudentRepository stu_repo, CurrentUser sesh){
+
         this.stu_repo = stu_repo;
+        this.sesh = sesh;
     }
 
-    public StudentService() {
 
-    }
 
 
     //TODO student register method AND FACULTY
     public Student register(Student new_user){
-            if (!isUserValid(new_user)) {
 
+            if (!isUserValid(new_user)) {
                 throw new InvalidRequestException("Invalid user data provided!");
             }else
-                System.out.println("inside regis");
                 return stu_repo.save(new_user);
     }
 
@@ -39,11 +41,27 @@ public class StudentService {
 
 
 
-    public Student login(String username, String password) {
-        if (username == null || username.trim().equals("") || password == null || password.trim().equals("")) {
-            throw new InvalidRequestException("Invalid user credentials provided!");
+    public Student login(String username, String password)  {
+
+
+        Student student = stu_repo.findUserByCredentials(username, password);
+        if (student == null) {
+
+            try {
+                throw new AuthenticationException("Invalid user");
+            } catch (AuthenticationException e) {
+                e.printStackTrace();
+            }
+
         }
 
-        return stu_repo.findUserByCredentials(username, password);
+        sesh.setCurrentUserStudent(student);
+
+        //TODO add authentication exception here.
+        return student;
+    }
+
+    public CurrentUser getSesh(){
+        return sesh;
     }
 }

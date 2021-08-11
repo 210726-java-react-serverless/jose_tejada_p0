@@ -3,17 +3,15 @@ package com.Revature.StudentManagementApp.repositories;
 import com.Revature.StudentManagementApp.models.Faculty;
 import com.Revature.StudentManagementApp.models.Student;
 import com.Revature.StudentManagementApp.util.MongoConnection;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 
-import static com.mongodb.client.model.Filters.eq;
+
 
 public class FacultyRepository implements CrudRepository<Faculty> {
 
@@ -49,7 +47,7 @@ public class FacultyRepository implements CrudRepository<Faculty> {
 
 
         Document facultyDoc = new Document("Salary", user.getSalary())
-                .append("Department", user.getDepartment())
+                .append("department", user.getDepartment())
                 .append( "user", newUserDoc);
 
         usersCollection.insertOne(facultyDoc);
@@ -58,6 +56,7 @@ public class FacultyRepository implements CrudRepository<Faculty> {
 
         user.setId(facultyDoc.get("_id").toString());
         System.out.println(user);
+
         return user;
     }
 
@@ -77,21 +76,40 @@ public class FacultyRepository implements CrudRepository<Faculty> {
     }
 
     public Faculty findUserByCredentials(String username, String password) {
+
         MongoConnection mc = MongoConnection.getInstance();
         MongoClient mongoClient = mc.getConnection();
 
         MongoDatabase p0 = mongoClient.getDatabase("jose_project_0");
-        Student student = null;
-        MongoCollection<Document> usersCollection = p0.getCollection( "faculty");
-//        Document queryDoc = new Document("user.user_name", username).append("user.password", password);
-//        Document authUserDoc = usersCollection.find(queryDoc).first();
-        Document doc = usersCollection.find(eq("user.user_name", username)).first();
-        System.out.println(doc);
-        if (doc == null) {
+        Faculty faculty = null;
+        MongoCollection<Document> usersCollection = p0.getCollection( "facultyy");
+        Document queryDoc = new Document("user.user_name", username).append("user.password", password);
+        Document facultyDoc = usersCollection.find(queryDoc).first();
+
+
+
+
+        if (facultyDoc == null) {
             return null;
-        }else {
         }
-        return new Faculty();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+
+        try {
+            faculty = mapper.readValue(facultyDoc.toJson(), Faculty.class);
+            faculty.setId(facultyDoc.get("_id").toString());
+            System.out.println(faculty);
+            return faculty;
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
+
+        return faculty;
+
 
     }
 

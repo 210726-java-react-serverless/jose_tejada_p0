@@ -1,5 +1,6 @@
 package com.Revature.StudentManagementApp.repositories;
 import com.Revature.StudentManagementApp.models.Student;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -7,9 +8,9 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import com.Revature.StudentManagementApp.util.MongoConnection;
 
-import static com.mongodb.client.model.Filters.eq;
 
 public class StudentRepository implements CrudRepository<Student>{
+
 
 
 
@@ -51,7 +52,6 @@ public class StudentRepository implements CrudRepository<Student>{
 
 
         user.setStudent_Id(StuDoc.get("_id").toString());
-        System.out.println(user);
 
         return user;
 
@@ -68,7 +68,7 @@ public class StudentRepository implements CrudRepository<Student>{
         return false;
     }
 
-    public Student findUserByCredentials(String username, String password) {
+    public Student findUserByCredentials(String username, String password)  {
 
         MongoConnection mc = MongoConnection.getInstance();
         MongoClient mongoClient = mc.getConnection();
@@ -76,25 +76,26 @@ public class StudentRepository implements CrudRepository<Student>{
         MongoDatabase p0 = mongoClient.getDatabase("jose_project_0");
         Student student = null;
         MongoCollection<Document> usersCollection = p0.getCollection( "students");
-//        Document queryDoc = new Document("user.user_name", username).append("user.password", password);
-//        Document authUserDoc = usersCollection.find(queryDoc).first();
-        Document doc = usersCollection.find(eq("user.user_name", username)).first();
-        System.out.println(doc);
-        if (doc == null) {
+        Document queryDoc = new Document("user.user_name", username).append("user.password", password);
+        Document studentDoc = usersCollection.find(queryDoc).first();
+        System.out.println(studentDoc);
+
+
+
+
+        if (studentDoc == null) {
             return null;
-        }else {
         }
-//
-//        ObjectMapper mapper = new ObjectMapper();
-//        try {
-//            student = mapper.readValue(doc.toJson(), Student.class);
-//            student.setStudent_Id((Integer) doc.get("_id"));
-//            System.out.println(student);
-//        } catch (Exception y) {
-//            y.printStackTrace();
-//        }
-//
-//        return student;
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            student = mapper.readValue(studentDoc.toJson(), Student.class);
+            student.setStudent_Id(studentDoc.get("_id").toString());
+            return student;
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } ;
         return student;
     }
 }

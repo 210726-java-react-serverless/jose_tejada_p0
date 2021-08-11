@@ -1,9 +1,11 @@
 package com.Revature.StudentManagementApp.models;
 
 import com.Revature.StudentManagementApp.util.IdGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {
-
 
     private String student_Id;
     private String Major;
@@ -21,9 +23,7 @@ public class Student {
     }
 
 
-    public String getStudent_Id() {
-        return student_Id;
-    }
+
 
     public String toFile() {
 
@@ -45,6 +45,9 @@ public class Student {
                 ", Major='" + Major + '\'' +
                 ", user=" + user +
                 '}';
+    }
+    public String getStudent_Id() {
+        return student_Id;
     }
 
     public void setStudent_Id(String student_Id) {

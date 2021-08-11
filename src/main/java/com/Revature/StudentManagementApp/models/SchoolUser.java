@@ -1,7 +1,9 @@
 package com.Revature.StudentManagementApp.models;
 
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Objects;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SchoolUser {
 
     private String first_name;
@@ -13,22 +15,37 @@ public class SchoolUser {
     private String email;
     private Address address;
 
-
-
-    public SchoolUser(){};
-
-    public SchoolUser(String first_name, String last_name, String DOB, String phone_num, String user_name, String password, String email, Address address) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.DOB = DOB;
-        this.phone_num = phone_num;
-        this.user_name = user_name;
-        this.password = password;
-        this.email = email;
-        this.address = address;
+    public String getFirst_name() {
+        return first_name;
     }
 
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
 
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+
+    public String getPhone_num() {
+        return phone_num;
+    }
+
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
+    }
 
     public String getUser_name() {
         return user_name;
@@ -53,6 +70,31 @@ public class SchoolUser {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public SchoolUser(){};
+
+    public SchoolUser(String first_name, String last_name, String DOB, String phone_num, String user_name, String password, String email, Address address) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.DOB = DOB;
+        this.phone_num = phone_num;
+        this.user_name = user_name;
+        this.password = password;
+        this.email = email;
+        this.address = address;
+    }
+
+
+
+
 
 
     @Override
@@ -89,46 +131,7 @@ public class SchoolUser {
         return Objects.hash(getFirst_name(), getLast_name(), getDOB(), getAddress(), getPhone_num(), getUser_name(), getPassword(), getEmail());
     }
 
-    public String getFirst_name() {
-        return first_name;
-    }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public String getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
-    }
-
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public String getPhone_num() {
-        return phone_num;
-    }
-
-    public void setPhone_num(String phone_num) {
-        this.phone_num = phone_num;
-    }
 
 
 
