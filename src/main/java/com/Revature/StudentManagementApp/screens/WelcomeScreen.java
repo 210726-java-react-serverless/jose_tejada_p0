@@ -49,6 +49,7 @@ public class WelcomeScreen extends Screen{
             default:
                 System.out.println("Not a valid entry ");
                 router.navigate("/welcome");
+                break;
 
         }
 

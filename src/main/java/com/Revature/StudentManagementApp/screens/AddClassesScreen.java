@@ -21,25 +21,37 @@ public class AddClassesScreen extends Screen{
 
     @Override
     public void render() throws Exception {
-        System.out.println("\n=============================");
-        System.out.println("\nEnter the course name\n");
+
         System.out.println("\n-Courses-");
         System.out.println("==============================");
-
         Student stu = registrationService.getSesh().getCurrentUserStudent();
-        try {
-            List<Courses> y = registrationService.listCoursesAvailable();
+        List<Courses> y = registrationService.listCoursesAvailable();
 
-        }catch(Exception d){
-            d.printStackTrace();
-        }
+        System.out.println("\n=============================");
+        System.out.println("\n-Enter the course code of the class you would like to register for-\n");
+
+
+
 
 
 
 
         String userSelection = consoleReader.readLine();
-        registrationService.registerForClass(userSelection, stu);
-        router.navigate("/studentScreen");
+        try {
+
+            registrationService.registerForClass(userSelection, stu);
+            logger.info("Successfully Registered for class");
+            router.navigate("/studentScreen");
+        }catch(Exception d){
+            logger.error("\nThat class is not available or does not exit");
+            router.navigate("/studentScreen");
+        }
+
+
+
+
+
+
 
 
 

@@ -75,6 +75,8 @@ public class RegistrationService {
 
             String date = coursesList.get(i).getStart_date();
             String dateEnd = coursesList.get(i).getEnd_date();
+
+            ///When a student wants to register for a class this will check if it is open for registration
             isWithinRegistrationDate IWR = new isWithinRegistrationDate(date, dateEnd);
 
             if (IWR.check()){

@@ -83,19 +83,15 @@ public class StudentRepository implements CrudRepository<Student>{
 
 
 
-        if (studentDoc == null) {
-            return null;
-        }
-
         ObjectMapper mapper = new ObjectMapper();
         try {
+            assert studentDoc != null;
             student = mapper.readValue(studentDoc.toJson(), Student.class);
             student.setStudent_Id(studentDoc.get("_id").toString());
             return student;
 
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        } ;
-        return student;
+            return null;
+        }
     }
 }

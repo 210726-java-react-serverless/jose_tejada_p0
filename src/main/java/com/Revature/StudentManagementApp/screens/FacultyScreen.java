@@ -67,6 +67,10 @@ public class FacultyScreen extends Screen{
                 facultyService.getSesh().endSessionFaculty();
                 router.navigate("/welcome");
                 break;
+            default:
+                logger.info("Invalid student screen option");
+                router.navigate("/welcome");
+                break;
 
         }
 

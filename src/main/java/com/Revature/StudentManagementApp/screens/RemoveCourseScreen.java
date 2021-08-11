@@ -36,6 +36,7 @@ public class RemoveCourseScreen extends Screen{
             case "Y":
                 registrationService.removeStudentsRegisteredToCourse(course_code);
                 courseService.deleteCourse(course_code);
+                logger.info("Course deleted and students removed from that deleted class");
                 router.navigate("/facultyScreen");
 
                 break;

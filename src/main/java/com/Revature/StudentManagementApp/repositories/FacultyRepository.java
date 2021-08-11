@@ -89,14 +89,13 @@ public class FacultyRepository implements CrudRepository<Faculty> {
 
 
 
-        if (facultyDoc == null) {
-            return null;
-        }
+
 
         ObjectMapper mapper = new ObjectMapper();
 
 
         try {
+            assert facultyDoc != null;
             faculty = mapper.readValue(facultyDoc.toJson(), Faculty.class);
             faculty.setId(facultyDoc.get("_id").toString());
             System.out.println(faculty);

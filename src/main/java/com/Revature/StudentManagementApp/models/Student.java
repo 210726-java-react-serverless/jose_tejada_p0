@@ -1,8 +1,6 @@
 package com.Revature.StudentManagementApp.models;
 
-import com.Revature.StudentManagementApp.util.IdGenerator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {

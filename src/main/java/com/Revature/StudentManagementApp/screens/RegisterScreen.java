@@ -28,6 +28,7 @@ public class RegisterScreen extends Screen{
 
             System.out.println("\nRegister for a new account!");
 
+            ///User selects what accont they wanna register for
             String menu = "\nWhat account are you registering for?\n" +
                     "1) Student Account\n" +
                     "2) Faculty Sccount\n" +
@@ -90,6 +91,7 @@ public class RegisterScreen extends Screen{
                             Student stu = new Student(major,firstName, lastName, dob, phoneNumber, username, password, email, a);
 
                             stu_service.register(stu);
+                            logger.info("Welcome to the University of Revature");
                             router.navigate("/welcome");
 
                         } catch (Exception e) {
@@ -129,7 +131,7 @@ public class RegisterScreen extends Screen{
 
                 }
             }catch (Exception e){
-                System.out.println("Not a valid entry");
+                System.out.println("Not an option");
 
             }
 

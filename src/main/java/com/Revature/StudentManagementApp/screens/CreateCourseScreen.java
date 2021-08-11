@@ -4,6 +4,8 @@ import com.Revature.StudentManagementApp.models.Courses;
 import com.Revature.StudentManagementApp.repositories.CourseRepository;
 import com.Revature.StudentManagementApp.services.CourseService;
 import com.Revature.StudentManagementApp.util.ScreenRouter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 
@@ -38,11 +40,12 @@ public class CreateCourseScreen extends Screen{
         try {
             Courses c = new Courses(course_name, course_code, start_date, end_date);
             courseService.addCourseToCatalog(c);
+            logger.info("Successfully add course to catalog");
             router.navigate("/facultyScreen");
 
         }catch (Exception y){
-            y.printStackTrace();
-            System.out.println("Make sure all fields are filled");
+            logger.error("Fields may have been left blank");
+            System.out.println("Please try again");
         }
 
 

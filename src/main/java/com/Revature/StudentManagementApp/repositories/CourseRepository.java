@@ -2,6 +2,7 @@ package com.Revature.StudentManagementApp.repositories;
 
 import com.Revature.StudentManagementApp.models.Courses;
 
+import com.Revature.StudentManagementApp.screens.Screen;
 import com.Revature.StudentManagementApp.util.MongoConnection;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoClient;
@@ -11,6 +12,8 @@ import com.mongodb.client.model.UpdateOptions;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -18,7 +21,7 @@ import static com.mongodb.client.model.Filters.eq;
 
 
 public class CourseRepository implements CrudRepository<Courses>{
-
+    protected final Logger logger = LogManager.getLogger(CourseRepository.class);
 
 
     @Override
@@ -74,7 +77,14 @@ public class CourseRepository implements CrudRepository<Courses>{
 
         try{
             DeleteResult result = usersCoursesCollection.deleteMany(queryDoc);
-            System.out.println("Removed: " + result);
+            System.out.println("Removed: " + result.getDeletedCount());
+            if (result.getDeletedCount() == 0){
+                logger.error("That course does not exits");
+                logger.info("Incorrect course code may have been entered.");
+
+            }else {
+                logger.info("successfully deleted " + code);
+            }
         }catch(MongoException m)
         {
             System.out.println("user doesnt exist");
@@ -95,7 +105,7 @@ public class CourseRepository implements CrudRepository<Courses>{
         try{
             UpdateResult result = usersCoursesCollection.updateOne(queryDoc, updates, options);
             System.out.println("Modified document count: " + result.getModifiedCount());
-            System.out.println("Upserted id: " + result.getUpsertedId());
+
 
         }catch(MongoException me)
         {

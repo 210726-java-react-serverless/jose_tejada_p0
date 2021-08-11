@@ -6,6 +6,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mongodb.MongoException;
 import com.mongodb.client.*;
 import com.mongodb.client.result.DeleteResult;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bson.Document;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationRepository {
-
+    Logger logger = LogManager.getLogger(RegistrationRepository.class);
 
 
     /////Repo
@@ -134,7 +136,14 @@ public class RegistrationRepository {
 
         try{
             DeleteResult result = usersCoursesCollection.deleteOne(queryDoc);
-            System.out.println("Removed: " + result);
+            if (result.getDeletedCount() == 0){
+                logger.error("Course doesnt exist or you are not registered to it");
+                System.out.println("Removed: " + result);
+            }else{
+                logger.info("Successfully unregistered for: "+code);
+                System.out.println("Removed: " + result);
+            }
+
         }catch(MongoException m)
         {
             System.out.println("user doesnt exist");

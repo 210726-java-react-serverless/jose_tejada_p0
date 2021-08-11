@@ -62,6 +62,9 @@ public class StudentScreen extends Screen{
                 studentService.getSesh().endSessionStudent();
                 router.navigate("/welcome");
                 break;
+            default:
+                logger.error("Not a valid Menu option");
+
 
         }
 

@@ -24,7 +24,7 @@ public class StudentInfomationScreen extends Screen{
         Student stu = studentService.getSesh().getCurrentUserStudent();
         System.out.println("Name: "+ stu.getUser().getFirst_name() + " " + stu.getUser().getLast_name() + "\n" +
                 "Major: "+ stu.getMajor()+ "\n" +
-                "Date of Birth: "+ stu.getUser() + "\n" +
+                "Date of Birth: "+ stu.getUser().getDOB() + "\n" +
                 "Phone Number: "+ stu.getUser().getPhone_num() + "\n" +
                 "Username: "+ stu.getUser().getUser_name() + "\n" +
                 "Email: "+ stu.getUser().getEmail() + "\n" +

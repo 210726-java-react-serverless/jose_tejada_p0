@@ -19,13 +19,14 @@ public class isWithinRegistrationDate {
         this.end = end;
     }
 
+    //This method checks to see if today is in between the registration and drop dates.
     public boolean check(){
 
 
         String[] date = start.split("/");
         String[] dateEnd = end.split("/");
         String[] twoDay = today.split("/");
-
+    ///
         Date Start = new Date(Integer.parseInt(date[2]), Integer.parseInt(date[0])-1, Integer.parseInt(date[1]));
 
         Date End = new Date(Integer.parseInt(dateEnd[2]), Integer.parseInt(dateEnd[0])-1, Integer.parseInt(dateEnd[1]));

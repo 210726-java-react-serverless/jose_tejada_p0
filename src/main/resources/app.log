@@ -1,0 +1,77 @@
+11.08.2021 00:53:33.134  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:24:52.726  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:User Did not select and account for registration
+11.08.2021 01:28:46.884  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:29:31.018  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:30:40.707  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:32:42.240  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 01:32:42.242  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login!
+11.08.2021 01:33:49.722  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 01:33:49.724  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login!
+11.08.2021 01:34:00.510  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:35:20.691  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 01:35:20.693  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login!
+11.08.2021 01:37:17.258  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 01:37:17.260  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 01:37:56.928  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 01:37:56.930  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 01:38:20.503  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:41:15.576  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 01:41:15.578  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 01:41:21.765  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:41:27.929  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:
+That class is not available or does not exit
+11.08.2021 01:47:31.765  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:47:48.818  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Successfully Registered for class
+11.08.2021 01:47:48.829  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:
+That class is not available or does not exit
+11.08.2021 01:50:08.317  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:51:00.049  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen: User Did not select and account for registration
+11.08.2021 01:51:13.713  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 01:51:23.663  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Successfully Registered for class
+11.08.2021 01:51:23.676  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:
+That class is not available or does not exit
+11.08.2021 08:42:56.715  - main - ERROR - com.Revature.StudentManagementApp.repositories.CourseRepository:That course does not exits
+11.08.2021 08:42:56.719  - main - INFO  - com.Revature.StudentManagementApp.repositories.CourseRepository:Incorrect course code may have been entered.
+11.08.2021 08:43:14.943  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:Fields may have been left blank
+11.08.2021 08:44:39.473  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:Fields may have been left blank
+11.08.2021 08:45:52.238  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Successfully add course to catalog
+11.08.2021 08:51:34.528  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 08:51:34.530  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 08:55:40.484  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 08:55:40.487  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 08:55:56.987  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:00:06.658  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:00:13.238  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:That course does not exist
+11.08.2021 09:00:13.238  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Wrong code code may have been entered
+11.08.2021 09:00:58.517  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:01:04.164  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:That course does not exist
+11.08.2021 09:01:04.164  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Wrong code code may have been entered
+11.08.2021 09:04:57.983  - main - ERROR - com.Revature.StudentManagementApp.repositories.CourseRepository:That course does not exits
+11.08.2021 09:04:57.983  - main - INFO  - com.Revature.StudentManagementApp.repositories.CourseRepository:Incorrect course code may have been entered.
+11.08.2021 09:08:12.031  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:09:01.233  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:That field option doesnt exits
+11.08.2021 09:13:37.723  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:14:59.347  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Successfully updated this course:  ALGBA-200
+11.08.2021 09:15:36.128  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 09:15:36.129  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 09:15:43.880  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen: User Did not select and account for registration
+11.08.2021 09:16:32.931  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:18:21.668  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:18:35.030  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:Not a valid Menu option
+11.08.2021 09:19:35.702  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:19:54.121  - main - INFO  - com.Revature.StudentManagementApp.screens.Screen:Successfully Registered for class
+11.08.2021 09:19:54.135  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:
+That class is not available or does not exit
+11.08.2021 09:21:21.299  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:22:25.037  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:33:01.453  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:
+That class is not available or does not exit
+11.08.2021 09:47:15.009  - main - INFO  - com.Revature.StudentManagementApp.screens.LoginScreen:Successfull Login
+11.08.2021 09:47:23.453  - main - ERROR - com.Revature.StudentManagementApp.repositories.RegistrationRepository:Course doesnt exist or you are not registered to it
+11.08.2021 09:52:39.168  - main - ERROR - com.Revature.StudentManagementApp.screens.Screen:
+That class is not available or does not exit
+11.08.2021 09:52:43.314  - main - ERROR - com.Revature.StudentManagementApp.repositories.RegistrationRepository:Course doesnt exist or you are not registered to it
+11.08.2021 09:53:00.340  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen: User Did not select and account for logging in
+11.08.2021 10:16:44.135  - main - ERROR - com.Revature.StudentManagementApp.screens.LoginScreen:null
+11.08.2021 10:16:44.137  - main - DEBUG - com.Revature.StudentManagementApp.screens.LoginScreen:User Cannot login! Incorrect username or password
+11.08.2021 10:20:35.524  - main - ERROR - com.Revature.StudentManagementApp.services.FacultyService:Fields may have been left blank

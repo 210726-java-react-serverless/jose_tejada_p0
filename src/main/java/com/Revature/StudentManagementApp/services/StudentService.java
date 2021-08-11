@@ -31,7 +31,7 @@ public class StudentService {
                 return stu_repo.save(new_user);
     }
 
-    private boolean isUserValid(Student user) {
+    public boolean isUserValid(Student user) {
         if (user == null)return false;
         if (user.getUser().getLast_name() == null || user.getUser().getLast_name().trim().equals("")) return false;
         if (user.getUser().getEmail() == null || user.getUser().getEmail().trim().equals("")) return false;
@@ -45,8 +45,8 @@ public class StudentService {
 
 
         Student student = stu_repo.findUserByCredentials(username, password);
-        if (student == null) {
 
+        if (student == null) {
             try {
                 throw new AuthenticationException("Invalid user");
             } catch (AuthenticationException e) {
@@ -57,7 +57,7 @@ public class StudentService {
 
         sesh.setCurrentUserStudent(student);
 
-        //TODO add authentication exception here.
+
         return student;
     }
 
